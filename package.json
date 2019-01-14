@@ -1,0 +1,23 @@
+{
+  "name": "tamatebooks",
+  "version": "1.0.0",
+  "description": "Simple App about books.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeorgeTamate/tamatebooks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GeorgeTamate/tamatebooks/issues"
+  },
+  "homepage": "https://github.com/GeorgeTamate/tamatebooks#readme",
+  "dependencies": {
+    "mysql2": "^1.6.4",
+    "sequelize": "^4.42.0"
+  }
+}

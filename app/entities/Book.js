@@ -1,6 +1,6 @@
 "use strict";
 
-const supplier = require('./../helpers/DummyDataSupplier');
+const repository = require('./../repositories/BookRepository');
 
 class Book {
     constructor() {
@@ -19,12 +19,13 @@ class Book {
         }
     }
 
-    static getBooks() {
-        return supplier.getBooks();
+    static async getBooks() {
+        const data = await repository.getBooks();
+        return data;
     }
 
-    static getPage(book, page, format) {
-        const data = supplier.getPage(book, page);
+    static async getPage(book, page, format) {
+        const data = await repository.getPage(book, page);
         if(data == null) {
             return null;
         }

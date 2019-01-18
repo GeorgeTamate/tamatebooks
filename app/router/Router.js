@@ -2,12 +2,12 @@
 const routes = require('./routes');
 
 class Router{
-    handleRequest(req) {
-        let response = this.route(req.method, req.url)
+    async handleRequest(req) {
+        let response = await this.route(req.method, req.url)
         return response;
     }
 
-    route(method, url) {
+    async route(method, url) {
         let urlData = this.parseUrl(url);
 
         if(!routes.hasOwnProperty(urlData.action) || routes[urlData.action]['method'] != method) {
@@ -22,9 +22,9 @@ class Router{
         const controller = new Controller();
         const actionMethod = routes[urlData.action]['action'];
         if(routes[urlData.action]['param'] == 'none') {
-            return controller[actionMethod]();
+            return await controller[actionMethod]();
         }
-        return controller[actionMethod](urlData.params);
+        return await controller[actionMethod](urlData.params);
     }
 
     parseUrl(url) {

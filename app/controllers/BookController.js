@@ -5,8 +5,8 @@ const Book = require('./../entities/Book');
 
 class BookController extends Controller {
 
-    index() {
-        const books = Book.getBooks();
+    async index() {
+        const books = await Book.getBooks();
         const response = {
             data: books
         }
@@ -17,7 +17,7 @@ class BookController extends Controller {
         );
     }
 
-    getPage(params) {
+    async getPage(params) {
         let id = null;
         let page = null;
         let format = null;
@@ -42,7 +42,7 @@ class BookController extends Controller {
         }
         format = this.getResponseType(format);
 
-        const content = Book.getPage(id, page, format);
+        const content = await Book.getPage(id, page, format);
         if(content == null) {
             return this.respondNotFound();
         }

@@ -37,9 +37,9 @@ DB_NAME=database_name
 
 In `app/database/queries.sql` is a query that can be used to create tables and seed data.
 
-But also, the [mysql-migrations](https://www.npmjs.com/package/mysql-migrations) module can do the migration and the seeding with a single command:
+But also, the migration and the seeding can be done with a single command:
 
-    $ node app/database/migration up
+    $ node app/database/migrate
 
 ## Usage
 

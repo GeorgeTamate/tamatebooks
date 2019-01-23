@@ -8,11 +8,13 @@ class Router{
     }
 
     async route(method, url) {
-        let urlData = this.parseUrl(url);
 
-        if(!routes.hasOwnProperty(urlData.action) || routes[urlData.action]['method'] != method) {
+        const urlData = this.parseUrl(url);
+
+        if(!this.routeExists(urlData.action, method)) {
             return this.getNotFoundResponse('Action not found');
         }
+
         if(!this.hasValidParams(urlData)) {
             return this.getNotFoundResponse('Action not found with specified parameters');
         }
@@ -48,6 +50,16 @@ class Router{
         return data;
     }
 
+    routeExists(action, method) {
+        if(!routes.hasOwnProperty(action)) {
+            return false;
+        }
+        if(routes[urlData.action]['method'] != method) {
+            return false;
+        }
+        return true;
+    }
+
     hasValidParams(data) {
         switch(routes[data.action]['param']) {
             case 'number':
@@ -66,6 +78,10 @@ class Router{
                 break;
         }
         return true;
+    }
+
+    hasInvalidParams(data) {
+        // @TODO
     }
 
     getNotFoundResponse(message = null) {
